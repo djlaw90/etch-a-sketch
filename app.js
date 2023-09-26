@@ -4,12 +4,18 @@
 //  (which can go directly in your HTML).
 // You need to make the divs appear as a grid (versus just one on each line).
 
-const grid = document.querySelector('.container');
+const grid = document.querySelector('.grid');
 
 for (let i = 0; i < 16; i++) {
   for (let j = 0; j < 16; j++) {
     const cell = document.createElement('div');
     cell.classList.add('cell');
+    cell.addEventListener('mouseover', function(){
+        cell.style.backgroundColor = '#28282B';
+    });
     grid.appendChild(cell);
   }
 }
+
+
+
