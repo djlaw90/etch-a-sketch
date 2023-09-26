@@ -1,14 +1,14 @@
 
-.grid-change {
-    text-align: ;
-    margin-left: auto;
-    margin-right: auto;
+
+.adjustment-column {
+    width: 225px;
+    border: 1px solid black;
 }
 
 .container {
     background-color: red;
-    width: 875px;
-    height: 700px;
+    width: 925px;
+    height: 750px;
     margin-left: auto;
     margin-right: auto;
     padding: 10px;
@@ -19,18 +19,19 @@
     display: grid;
     margin-left: auto;
     margin-right: auto;
-    grid-template-rows: repeat(16, auto);
-    grid-template-columns: repeat(16, auto);
-    border: 1px solid black;
-    width: 650px;
-    height: 450px;
+    width: 500px;
+    height: 500px;
 }
+
+.slidecontainer {
+    width: 100%; /* Width of the outside container */
+  }
+  
+ 
 
   /* Define the grid cell styles */
 .cell {
-    border: 1px solid black;
     background-color: lightgray;
-
 }
 
 @font-face {
