@@ -8,14 +8,13 @@ const grid = document.querySelector('.grid');
 
 const rangeSlider = document.getElementById("myRange");
 const rangeValue = document.querySelector(".range-value");
-rangeValue.innerHTML = rangeSlider.value; // Display the default slider value
 
-// Update the current slider value (each time you drag the slider handle)
-rangeSlider.oninput = function() {
-  rangeValue.innerHTML = this.value;
-  displayGrid(this.value);
-}
+rangeValue.innerHTML = rangeSlider.value;
 
+rangeSlider.addEventListener('input', function(){
+    rangeValue.innerHTML = this.value;
+    displayGrid(this.value);
+});
 
 const displayGrid = (value = 16) => {
     grid.style.gridTemplateColumns = `repeat(${value}, auto)`;
