@@ -1,26 +1,31 @@
-// Create the divs using JavaScript. Don’t try making them by hand
-//  with copy and pasting in your HTML file!
-// It’s best to put your grid squares inside another “container” div
-//  (which can go directly in your HTML).
-// You need to make the divs appear as a grid (versus just one on each line).
-
 const grid = document.querySelector('.grid');
+const resetButton = document.querySelector('.reset');
+const randomButton = document.querySelector('.random');
+const blackButton = document.querySelector('.black');
+const eraserButton = document.querySelector('.eraser');
 
 const rangeSlider = document.getElementById("myRange");
 const rangeValue = document.querySelector(".range-value");
 
-rangeValue.innerHTML = rangeSlider.value;
+//show initial slider value
+rangeValue.textContent = `${rangeSlider.value}x${rangeSlider.value}`;
 
 rangeSlider.addEventListener('input', function(){
-    rangeValue.innerHTML = this.value;
-    displayGrid(this.value);
+    rangeValue.innerHTML = `${this.value}x${this.value}`;
+    removeAllChildNodes(grid);
+    createGrid(this.value);
 });
 
-const displayGrid = (value = 16) => {
-    grid.style.gridTemplateColumns = `repeat(${value}, auto)`;
-    grid.style.gridTemplateRows = `repeat(${value}, auto)`;
-    for (let i = 0; i < value; i++) {
-        for (let j = 0; j < value; j++) {
+const removeAllChildNodes = (parent) => {
+    while(parent.firstChild){
+        parent.removeChild(parent.firstChild);
+    }
+}
+const createGrid = (numCells = 8) => {
+    grid.style.gridTemplateColumns = `repeat(${numCells}, ${500/numCells}px)`;
+    grid.style.gridTemplateRows = `repeat(${numCells}, ${500/numCells}px)`;
+    for (let rows = 0; rows < numCells; rows++) {
+        for (let columns = 0; columns < numCells; columns++) {
             const cell = document.createElement('div');
             cell.classList.add('cell');
             cell.addEventListener('mouseover', function(){
@@ -31,8 +36,69 @@ const displayGrid = (value = 16) => {
     }
 }
 
-displayGrid();
+const getRandomColorHex = () => {
+    const hex = '0123456789ABCDEF';
+    let output = '';
+    for (let i = 0; i < 6; ++i) {
+        output += hex.charAt(Math.floor(Math.random() * hex.length));
+    }
+    colorMode = 'random';
+    return output;
+}
 
+const makeColorCells = () => {
+    const cells = grid.children;
+    const range = rangeSlider.value;
+    for(let i = 0; i < range*range; i++) {
+        cells[i].addEventListener('mouseover', function(event){
+            event.target.style.backgroundColor = getRandomColorHex();
+        })
+    }
+}
+
+const makeBlackCells = () => {
+    const cells = grid.children;
+    const range = rangeSlider.value;
+    for(let i = 0; i < range*range; i++) {
+        cells[i].addEventListener('mouseover', function(event){
+            event.target.style.backgroundColor = '#28282B';
+        })
+    }
+}
+
+const eraseCells = () => {
+    const cells = grid.children;
+    const range = rangeSlider.value;
+    for(let i = 0; i < range*range; i++) {
+        cells[i].addEventListener('mouseover', function(event){
+            event.target.style.backgroundColor = 'lightgrey';
+        })
+    }
+}
+
+// const changeColor = (color) => {
+//     const cells = grid.children;
+//     const range = rangeSlider.value;
+
+//     for(let i = 0; i < range*range; i++) {
+//         cells[i].addEventListener('mouseover', function(event){
+//             event.target.style.backgroundColor = color;
+//         })
+//     }
+// }
+
+const clearGrid = () => {
+    document.querySelectorAll('.cell').forEach(function(cell){
+        return cell.style.backgroundColor = 'lightgrey';
+    });
+}
+
+resetButton.addEventListener('click', clearGrid);
+randomButton.addEventListener('click', makeColorCells);
+blackButton.addEventListener('click', makeBlackCells);
+eraserButton.addEventListener('click', eraseCells);
+
+createGrid();
 
 
 
