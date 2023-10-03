@@ -102,6 +102,12 @@ randomButton.addEventListener('click', makeColorCells);
 blackButton.addEventListener('click', makeBlackCells);
 eraserButton.addEventListener('click', eraseCells);
 
+// randomButton.addEventListener('click', changeColor(getRandomColorHex()));
+// blackButton.addEventListener('click', changeColor('#28282B'));
+// eraserButton.addEventListener('click', eraseCells('lightgrey'));
+
+
+
 createGrid();
 
 
