@@ -52,7 +52,7 @@ const makeColorCells = () => {
     for(let i = 0; i < range*range; i++) {
         cells[i].addEventListener('mouseover', function(event){
             event.target.style.backgroundColor = getRandomColorHex();
-        })
+        });
     }
 }
 
@@ -62,7 +62,7 @@ const makeBlackCells = () => {
     for(let i = 0; i < range*range; i++) {
         cells[i].addEventListener('mouseover', function(event){
             event.target.style.backgroundColor = '#28282B';
-        })
+        });
     }
 }
 
@@ -72,11 +72,15 @@ const eraseCells = () => {
     for(let i = 0; i < range*range; i++) {
         cells[i].addEventListener('mouseover', function(event){
             event.target.style.backgroundColor = 'lightgrey';
-        })
+        });
     }
 }
 
-// const changeColor = (color) => {
+//This won't work when I call the event listeners with this 
+//and pass into the cell color values.
+//I'm not sure why...
+
+// const changeColor = color => {
 //     const cells = grid.children;
 //     const range = rangeSlider.value;
 
