@@ -80,14 +80,18 @@ const eraseCells = () => {
 //and pass into the cell color values.
 //I'm not sure why...
 
-// const changeColor = color => {
+createGrid();
+
+// const changeColor = (color) => {
 //     const cells = grid.children;
 //     const range = rangeSlider.value;
+
+//     console.log(grid.children);
 
 //     for(let i = 0; i < range*range; i++) {
 //         cells[i].addEventListener('mouseover', function(event){
 //             event.target.style.backgroundColor = color;
-//         })
+//         });
 //     }
 // }
 
@@ -104,11 +108,8 @@ eraserButton.addEventListener('click', eraseCells);
 
 // randomButton.addEventListener('click', changeColor(getRandomColorHex()));
 // blackButton.addEventListener('click', changeColor('#28282B'));
-// eraserButton.addEventListener('click', eraseCells('lightgrey'));
+// eraserButton.addEventListener('click', changeColor('lightgrey'));
 
-
-
-createGrid();
 
 
 
