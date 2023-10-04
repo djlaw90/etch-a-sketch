@@ -97,8 +97,11 @@ createGrid();
 
 const clearGrid = () => {
     document.querySelectorAll('.cell').forEach(function(cell){
-        return cell.style.backgroundColor = 'lightgrey';
+         cell.style.backgroundColor = 'lightgrey';
+         makeBlackCells();
+         blackButton.focus();
     });
+    
 }
 
 resetButton.addEventListener('click', clearGrid);
